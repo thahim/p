@@ -1,1 +1,279 @@
-ME.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saad Thahim - Travel & Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #e6f2e6;
+      color: #2e4d25;
+    }
+    header {
+      background: linear-gradient(90deg, #4caf50, #81c784);
+      padding: 50px 20px;
+      text-align: center;
+      color: #e9f5db;
+      box-shadow: 0 4px 10px rgba(46, 77, 37, 0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.4rem;
+      font-weight: 500;
+      font-style: italic;
+      color: #d0e8c6;
+    }
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      color: #3a6b35;
+      border-bottom: 3px solid #81c784;
+      padding-bottom: 10px;
+      font-weight: 600;
+      font-size: 2rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    li {
+      margin-bottom: 15px;
+      padding-left: 15px;
+      position: relative;
+      font-weight: 500;
+    }
+    li::before {
+      content: "🌿";
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 160px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 15px;
+      cursor: pointer;
+      border: 3px solid #a5d6a7;
+      box-shadow: 0 4px 10px rgba(74, 142, 74, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(46, 125, 50, 0.7);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(46, 77, 37, 0.85);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .lightbox-content {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      max-width: 90%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #e9f5db;
+    }
+    .lightbox-content.show {
+      opacity: 1;
+    }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #a5d6a7;
+    }
+    .lightbox p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.4;
+      font-weight: 600;
+      font-style: italic;
+    }
+    .close-btn {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.8rem;
+      color: #c8e6c9;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .close-btn:hover {
+      color: #f1f8e9;
+    }
+    /* Loading Spinner */
+    .spinner {
+      border: 5px solid #c8e6c9;
+      border-top: 5px solid #4caf50;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% {transform: rotate(0deg);}
+      100% {transform: rotate(360deg);}
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #81c784;
+      color: #e9f5db;
+      font-weight: 600;
+      letter-spacing: 1.1px;
+      box-shadow: inset 0 3px 5px rgba(46, 77, 37, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .gallery img {
+        width: 45vw;
+        height: 35vw;
+      }
+      header h1 {
+        font-size: 2.4rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Saad Thahim</h1>
+    <p>Computer Systems Engineer | Business Owner | Government Officer</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Profile</h2>
+      <ul>
+        <li>Owner of Agriculture Farm</li>
+        <li>Partner at Sindh Cotton Ginning & Oil Mill</li>
+        <li>Assistant Director, Minorities Affairs Department, Government of Sindh</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Thailand Memories</h2>
+      <div class="gallery">
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240908_134935(1).jpg" alt="Enjoying the sunny Thailand beach" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240907_114228(1).jpg" alt="Exploring a local market in Bangkok" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240906_131245.jpg" alt="Walking through the colorful city streets" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240906_130329.jpg" alt="A visit to a peaceful temple" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240905_194804.jpg" alt="Night lights and busy street life" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240905_191453.jpg" alt="Trying tasty Thai street food" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240905_184948.jpg" alt="Local shops full of colors" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240905_182934.jpg" alt="Evening vibes near the food court" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240904_094405(1).jpg" alt="Early morning walk through local streets" onclick="openLightbox(this)" />
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20240904_083349.jpg" alt="Visit to a peaceful Buddhist shrine" onclick="openLightbox(this)" />
+      </div>
+    </section>
+
+    <section>
+      <h2>Malaysia Flashback</h2>
+      <div class="gallery">
+        <img src="https://raw.githubusercontent.com/thahim/p/main/20180712_114836.jpg" alt="Standing at a famous Malaysia landmark" onclick="openLightbox(this)" />
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-content" class="lightbox-content">
+      <div class="spinner" id="spinner"></div>
+      <img id="lightbox-img" src="" alt="" style="display:none;" />
+      <p id="lightbox-desc"></p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Saad Thahim. All rights reserved.
+  </footer>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const spinner = document.getElementById('spinner');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+
+    function openLightbox(img) {
+      lightbox.style.display = 'flex';
+      spinner.style.display = 'block';
+      lightboxImg.style.display = 'none';
+      lightboxDesc.textContent = '';
+      lightboxContent.classList.remove('show');
+
+      setTimeout(() => {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxDesc.textContent = img.alt;
+        spinner.style.display = 'none';
+        lightboxImg.style.display = 'block';
+        lightboxContent.classList.add('show');
+      }, 1000);
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightboxContent.classList.remove('show');
+    }
+
+    // Close lightbox when clicking outside the content
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
