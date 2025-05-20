@@ -1,10 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saad Thahim - Travel & Profile</title>
+  <title>Saad Thahim Personal Web</title>
+
+  <!-- Open Graph / Link Preview Tags -->
+  <meta property="og:title" content="Saad Thahim Personal Web" />
+  <meta property="og:description" content="Explore the travels and professional profile of Saad Thahim." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/thahim/p/main/20240908_134935(1).jpg" />
+  <meta property="og:type" content="website" />
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -111,6 +120,7 @@
       flex-direction: column;
       align-items: center;
       color: #e9f5db;
+      position: relative;
     }
     .lightbox-content.show {
       opacity: 1;
@@ -120,6 +130,7 @@
       max-height: 70vh;
       border-radius: 20px;
       box-shadow: 0 0 30px #a5d6a7;
+      cursor: pointer;
     }
     .lightbox p {
       margin-top: 15px;
@@ -131,16 +142,40 @@
       font-style: italic;
     }
     .close-btn {
+      margin-top: 20px;
+      background-color: #4caf50;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 30px;
+      color: #e9f5db;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(46, 125, 50, 0.7);
+      transition: background-color 0.3s ease;
+    }
+    .close-btn:hover {
+      background-color: #357a38;
+    }
+    .close-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px #a5d6a7;
+    }
+    .close-btn:active {
+      background-color: #2e5930;
+    }
+    .close-x {
       position: absolute;
-      top: 25px;
-      right: 35px;
+      top: 15px;
+      right: 20px;
       font-size: 2.8rem;
       color: #c8e6c9;
       cursor: pointer;
       user-select: none;
       transition: color 0.3s ease;
+      z-index: 1010;
     }
-    .close-btn:hover {
+    .close-x:hover {
       color: #f1f8e9;
     }
     /* Loading Spinner */
@@ -227,11 +262,12 @@
   </main>
 
   <div class="lightbox" id="lightbox">
-    <span class="close-btn" onclick="closeLightbox()">&times;</span>
+    <span class="close-x" id="close-x">&times;</span>
     <div id="lightbox-content" class="lightbox-content">
       <div class="spinner" id="spinner"></div>
       <img id="lightbox-img" src="" alt="" style="display:none;" />
       <p id="lightbox-desc"></p>
+      <button class="close-btn" id="close-btn">Close</button>
     </div>
   </div>
 
@@ -245,6 +281,8 @@
     const spinner = document.getElementById('spinner');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxDesc = document.getElementById('lightbox-desc');
+    const closeButton = document.getElementById('close-btn');
+    const closeX = document.getElementById('close-x');
 
     function openLightbox(img) {
       lightbox.style.display = 'flex';
@@ -268,11 +306,15 @@
       lightboxContent.classList.remove('show');
     }
 
-    // Close lightbox when clicking outside the content
+    // Close when clicking the close button
+    closeButton.addEventListener('click', closeLightbox);
+    // Close when clicking the X icon
+    closeX.addEventListener('click', closeLightbox);
+    // Close when clicking the photo inside lightbox
+    lightboxImg.addEventListener('click', closeLightbox);
+    // Also close when clicking outside content (on overlay)
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
+      if (e.target === lightbox) closeLightbox();
     });
   </script>
 </body>
